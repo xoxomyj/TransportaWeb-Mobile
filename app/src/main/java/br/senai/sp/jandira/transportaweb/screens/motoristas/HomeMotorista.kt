@@ -2,79 +2,124 @@ package br.senai.sp.jandira.transportaweb.screens.motoristas
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxHeight
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.offset
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.input.pointer.PointerIcon.Companion.Text
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.navigation.NavHostController
-import androidx.navigation.compose.rememberNavController
+import androidx.compose.ui.unit.sp
 import br.senai.sp.jandira.transportaweb.R
-import br.senai.sp.jandira.transportaweb.ui.theme.TransportaWebTheme
 
 @Composable
-fun HomeMotorista(controleNavegacao: NavHostController) {
+fun HomeScreen() {
     Surface(
         modifier = Modifier.fillMaxSize(),
         color = Color(0xFFC00000)
     ) {
-        Box(modifier = Modifier.fillMaxSize()) {
-            Column(
+        Column {
+            Box(
                 modifier = Modifier
-                    .fillMaxHeight(0.2f)
                     .fillMaxWidth()
+                    .fillMaxHeight(0.2f)
                     .background(Color.White)
-                    .align(Alignment.TopCenter),
-                verticalArrangement = Arrangement.Top,
-                horizontalAlignment = Alignment.Start
             ) {
-                Row(
-                    modifier = Modifier
-                        .padding(start = 16.dp, top = 16.dp)
-                        .fillMaxWidth(),
-                    verticalAlignment = Alignment.CenterVertically
+                Column(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalAlignment = Alignment.Start,
+                    verticalArrangement = Arrangement.Top
                 ) {
-                    Image(
-                        painter = painterResource(id = R.drawable.logoo),
-                        contentDescription = "Logo",
-                        modifier = Modifier
-                            .size(130.dp)
-                            .offset(y = -50.dp, x = -10.dp)
-                    )
-                    Spacer(modifier = Modifier.width(8.dp))
-                    Text(
-                        modifier = Modifier.offset(y = -50.dp)
-                            .padding(),
-                        text = "Nome",
-                        color = Color(0xFFC00000),
+                    Row(
+                        modifier = Modifier.fillMaxWidth(),
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
 
+                        Image(
+                            painter = painterResource(id = R.drawable.logoo),
+                            contentDescription = "Logo",
+                            modifier = Modifier
+                                .size(80.dp)
+                                .padding(start = 16.dp)
                         )
+
+                        Spacer(modifier = Modifier.weight(1f))
+                        Row(
+                            verticalAlignment = Alignment.CenterVertically,
+                            modifier = Modifier.padding(end = 16.dp)
+                        ) {
+
+                            Text(
+                                text = "Nome",
+                                fontWeight = FontWeight.Bold,
+                                color = Color(0xFFC00000),
+                                modifier = Modifier.padding(end = 8.dp)
+                            )
+
+
+                            Box(
+                                modifier = Modifier
+                                    .size(30.dp)
+                                    .background(Color(0xFFC00000), shape = CircleShape)
+                            ) {
+                                Image(
+                                    painter = painterResource(id = R.drawable.perfil),
+                                    contentDescription = "Perfil",
+                                    modifier = Modifier
+                                        .size(30.dp)
+                                        .align(Alignment.Center)
+                                )
+                            }
+                        }
+                    }
+
+
+                    Row(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(end = 16.dp),
+                        horizontalArrangement = Arrangement.End
+                    ) {
+                        Box(
+                            modifier = Modifier
+                                .width(81.dp)
+                                .height(26.dp)
+                                .background(Color(0xFFC00000), shape = RoundedCornerShape(16.dp))
+                        ) {
+                            Text(
+                                text = "Status",
+                                fontWeight = FontWeight.Bold,
+                                color = Color.White,
+                                fontSize = 15.sp,
+                                modifier = Modifier
+                                    .fillMaxSize()
+                                    .wrapContentSize(Alignment.Center)
+                                    .padding(start = 8.dp)
+                            )
+                        }
+                    }
                 }
             }
         }
     }
 }
 
-@Preview(showBackground = true, showSystemUi = true)
+
+
+
+
+@Preview(showBackground = true)
 @Composable
-fun HomeMotoristaPreview() {
-    TransportaWebTheme {
-        HomeMotorista(controleNavegacao = rememberNavController())
+fun HomeScreenPreview() {
+        MaterialTheme {
+         HomeScreen()
     }
 }
