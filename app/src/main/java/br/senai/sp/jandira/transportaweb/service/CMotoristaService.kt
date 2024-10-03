@@ -12,11 +12,11 @@ import retrofit2.http.Path
 interface CMotoristaService {
 
     // Retorna uma lista de motoristas. (GET)
-    @GET("empresas")
+    @GET("v1/transportaweb/motoristas")
     fun getMotoristas(): Call<List<Motorista>>
 
     // Retorna um motorista pelo ID. (GET)
-    @GET("motoristas/{id}")
+    @GET("v1/transportaweb/motoristas/{id}")
     fun getMotoristasById(@Path("id") id: Int): Call<Motorista>
 
     // Enviar uma (POST)

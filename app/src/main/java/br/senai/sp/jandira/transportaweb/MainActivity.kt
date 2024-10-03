@@ -19,6 +19,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import br.senai.sp.jandira.transportaweb.screens.empresas.CadastroEmpresa
 import br.senai.sp.jandira.transportaweb.screens.motoristas.CadastroMotorista
+import br.senai.sp.jandira.transportaweb.screens.motoristas.Login
 import br.senai.sp.jandira.transportaweb.ui.theme.TransportaWebTheme
 
 class   MainActivity : ComponentActivity() {
@@ -33,10 +34,11 @@ class   MainActivity : ComponentActivity() {
                 ) {
                     val controleNavegacao = rememberNavController()
                     NavHost(navController = controleNavegacao,
-                        startDestination = "cadastroempresa"
+                        startDestination = "login"
                     ){
                         composable(route = "cadastroempresa"){ CadastroEmpresa(controleNavegacao) }
                         composable(route = "cadastromotorista"){ CadastroMotorista(controleNavegacao) }
+                        composable(route = "login"){ Login(controleNavegacao) }
                     }
 
                 }

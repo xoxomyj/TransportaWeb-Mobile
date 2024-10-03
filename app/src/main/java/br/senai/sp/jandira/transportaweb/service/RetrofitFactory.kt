@@ -1,7 +1,5 @@
 package br.senai.sp.jandira.transportaweb.service
 
-import br.senai.sp.jandira.transportaweb.service.CEmpresaService
-import br.senai.sp.jandira.transportaweb.service.CMotoristaService
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
@@ -15,7 +13,7 @@ class RetrofitFactory {
         .addConverterFactory(GsonConverterFactory.create())
         .build()
 
-        fun getMotoristaService(): CMotoristaService {
+        fun getMotoristaService(java: Class<CMotoristaService>): CMotoristaService {
             return retrofitFactory.create(CMotoristaService::class.java)
         }
 
@@ -30,5 +28,7 @@ class RetrofitFactory {
         fun postEmpresaService(): CEmpresaService {
             return retrofitFactory.create((CEmpresaService::class.java))
         }
+
+
 
 }
