@@ -22,7 +22,7 @@ import androidx.compose.ui.unit.sp
 import br.senai.sp.jandira.transportaweb.R
 
 @Composable
-fun WelcomeScreen() {
+fun TelaInicial() {
     Surface(
         modifier = Modifier.fillMaxSize(),
         color = Color.White
@@ -88,8 +88,8 @@ fun WelcomeScreen() {
 
 @Preview(showBackground = true)
 @Composable
-fun WelcomeScreenPreview() {
+fun TelaInicialPreview() {
     MaterialTheme {
-        WelcomeScreen()
+        TelaInicial()
     }
 }
