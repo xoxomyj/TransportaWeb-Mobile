@@ -29,6 +29,8 @@ class RetrofitFactory {
             return retrofitFactory.create((CEmpresaService::class.java))
         }
 
-
+        fun getMotoristaService(): CMotoristaService {
+            return retrofitFactory.create(CMotoristaService::class.java)
+        }
 
 }

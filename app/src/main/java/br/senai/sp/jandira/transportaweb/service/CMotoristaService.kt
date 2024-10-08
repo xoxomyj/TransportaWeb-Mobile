@@ -1,6 +1,8 @@
 package br.senai.sp.jandira.transportaweb.service
 
+import br.senai.sp.jandira.transportaweb.model.LoginMotorista
 import br.senai.sp.jandira.transportaweb.model.Motorista
+import br.senai.sp.jandira.transportaweb.model.RespostaLogin
 // import br.senai.sp.jandira.telainicio.model.LoginResponse
 import retrofit2.Call
 import retrofit2.http.Body
@@ -28,5 +30,9 @@ interface CMotoristaService {
     // @Headers("Content-Type: application/json")
     // @POST("login")
     // fun getAlunoByEmailSenha(@Body EmailSenha: Login): Call<LoginResponse>
+
+    @Headers("Content-Type: application/json")
+    @POST("/v1/transportaweb/motorista/login")
+    fun getMotoristaByEmailSenha(@Body EmailSenha: LoginMotorista): Call<RespostaLogin>
 
 }

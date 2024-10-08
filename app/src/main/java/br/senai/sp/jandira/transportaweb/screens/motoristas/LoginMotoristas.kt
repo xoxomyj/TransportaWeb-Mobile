@@ -1,6 +1,5 @@
-package br.senai.sp.jandira.transportaweb.screens.motoristas
+package br.senai.sp.jandira.transportaweb.screens
 
-import android.util.Log
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -10,18 +9,13 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Email
 import androidx.compose.material3.Button
-import androidx.compose.material3.ButtonColors
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Checkbox
 import androidx.compose.material3.CheckboxDefaults
-import androidx.compose.material3.Icon
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.Surface
@@ -32,10 +26,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.node.ModifierNodeElement
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
@@ -44,29 +35,29 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import br.senai.sp.jandira.transportaweb.R
-import br.senai.sp.jandira.transportaweb.model.Motorista
-import br.senai.sp.jandira.transportaweb.service.CMotoristaService
+import br.senai.sp.jandira.transportaweb.model.LoginMotorista
+import br.senai.sp.jandira.transportaweb.model.RespostaLogin
 import br.senai.sp.jandira.transportaweb.service.RetrofitFactory
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-//import br.senai.sp.jandira.transportaweb.utilities.MotoristaRepository
-
 @Composable
-fun Login(controleDeNavegacao: NavHostController) {
+fun LoginMotorista(controleDeNavegacao: NavHostController) {
 
-//    val cr =  MotoristaRepository(LocalContext.current)
+    val retrofitFactory = RetrofitFactory()
 
-    var email = remember{
+    var emailState = remember{
         mutableStateOf("")
     }
 
-    var senha = remember{
+    var passwordState = remember{
         mutableStateOf("")
     }
 
-    val retrofitFactory = RetrofitFactory();
+    var mensagemErroState = remember {
+        mutableStateOf("")
+    }
 
     Surface(
         modifier = Modifier
@@ -114,8 +105,8 @@ fun Login(controleDeNavegacao: NavHostController) {
                     modifier = Modifier
                         .height(50.dp),
                     shape = RoundedCornerShape(10.dp),
-                    value = email.value,
-                    onValueChange = {email.value = it},
+                    value = emailState.value,
+                    onValueChange = { emailState.value = it},
                     colors = OutlinedTextFieldDefaults.colors(
                         focusedBorderColor = Color(0xFFF61221),
                         unfocusedBorderColor = Color(0xFF131313),
@@ -146,8 +137,8 @@ fun Login(controleDeNavegacao: NavHostController) {
                         focusedContainerColor = Color(0xFFF4F4F4),
                         unfocusedContainerColor = Color(0xFFF4F4F4)
                     ),
-                    value = senha.value,
-                    onValueChange = {senha.value=it},
+                    value = passwordState.value,
+                    onValueChange = {passwordState.value = it},
                     label = {
 
                         Text(
@@ -192,24 +183,35 @@ fun Login(controleDeNavegacao: NavHostController) {
                     colors = ButtonDefaults
                         .buttonColors(containerColor = Color(0xFFF61221)),
                     onClick = {
-//                        val usuarioService = retrofitFactory.getMotoristaService(CMotoristaService::class.java)
-//                        usuarioService.loginUsuario(email, senha).enqueue(object : Callback<Motorista> {
-//                            override fun onResponse(call: Call<Motorista>, response: Response<Motorista>) {
-//                                if (response.isSuccessful) {
-//                                    Log.i("response", response.body().toString())
-//                                    controleDeNavegacao.navigate("historico")
-//                                } else {
-//                                    Log.i("response", response.errorBody()?.string() ?: "Erro desconhecido")
-//
-//                                }
-//                            }
-//
-//                            override fun onFailure(call: Call<Motorista>, t: Throwable) {
-//                                Log.i("response", t.toString())
-//
-//                            }
-//                        })
-                    },
+
+                        val motoristaLogin = LoginMotorista(
+                            email = emailState.value,
+                            senha = passwordState.value
+                        )
+
+                        val call = retrofitFactory.getMotoristaService().getMotoristaByEmailSenha(motoristaLogin)
+
+                        call.enqueue(object : Callback<RespostaLogin> {
+                            override fun onResponse(call: Call<RespostaLogin>, response: Response<RespostaLogin>) {
+                                if (response.isSuccessful) {
+                                    val motoristaLogado = response.body()
+                                    motoristaLogado?.let {
+                                        if (it.status_code == 200) {
+                                            controleDeNavegacao.navigate("historicoViagens")
+                                        } else {
+                                            mensagemErroState.value = "Erro: ${it.message}"
+                                        }
+                                    }
+                                } else {
+                                    mensagemErroState.value = "Falha ao realizar login. Tente novamente."
+                                }
+                            }
+
+                            override fun onFailure(call: Call<RespostaLogin>, t: Throwable) {
+                                mensagemErroState.value = "Erro de rede: ${t.message}"
+                            }
+                        })
+                    }
                 ){
                     Text(
                         text = "LOGIN",
@@ -227,3 +229,6 @@ fun Login(controleDeNavegacao: NavHostController) {
 private fun LoginPreview() {
     //Login()
 }
+
+// tesstando@gmail.com
+// PedrinhoJUAN
