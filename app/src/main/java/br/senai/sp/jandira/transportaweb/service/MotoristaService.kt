@@ -11,7 +11,7 @@ import retrofit2.http.Headers
 import retrofit2.http.POST
 import retrofit2.http.Path
 
-interface CMotoristaService {
+interface MotoristaService {
 
     // Retorna uma lista de motoristas. (GET)
     @GET("v1/transportaweb/motoristas")

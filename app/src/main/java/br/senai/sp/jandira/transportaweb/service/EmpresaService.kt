@@ -9,7 +9,7 @@ import retrofit2.http.Headers
 import retrofit2.http.POST
 import retrofit2.http.Path
 
-interface CEmpresaService {
+interface EmpresaService {
 
     // Retorna uma lista de motoristas. (GET)
     @GET("v1/transportaweb/empresas")

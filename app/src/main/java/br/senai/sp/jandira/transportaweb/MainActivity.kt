@@ -11,6 +11,7 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.compositionLocalOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
@@ -18,9 +19,10 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import br.senai.sp.jandira.transportaweb.model.LoginMotorista
-import br.senai.sp.jandira.transportaweb.screens.LoginMotorista
-import br.senai.sp.jandira.transportaweb.screens.empresas.CadastroEmpresa
-import br.senai.sp.jandira.transportaweb.screens.motoristas.CadastroMotorista
+import br.senai.sp.jandira.transportaweb.screens.LoginM
+import br.senai.sp.jandira.transportaweb.screens.empresas.CadastroE
+import br.senai.sp.jandira.transportaweb.screens.motoristas.CadastroM
+import br.senai.sp.jandira.transportaweb.screens.motoristas.HomeM
 import br.senai.sp.jandira.transportaweb.ui.theme.TransportaWebTheme
 
 class   MainActivity : ComponentActivity() {
@@ -37,9 +39,14 @@ class   MainActivity : ComponentActivity() {
                     NavHost(navController = controleNavegacao,
                         startDestination = "loginMotorista"
                     ){
-                        composable(route = "cadastroempresa"){ CadastroEmpresa(controleNavegacao) }
-                        composable(route = "cadastromotorista"){ CadastroMotorista(controleNavegacao) }
-                        composable(route = "loginMotorista"){ LoginMotorista(controleNavegacao) }
+                        // ********************************** MOTORISTA ********************************** //
+
+                        composable(route = "cadastroMotorista"){ CadastroM(controleNavegacao) }
+                        composable(route = "loginMotorista"){ LoginM(controleNavegacao) }
+                        composable(route = "homeMotorista"){ HomeM(controleNavegacao) }
+
+                        // ********************************** EMPRESA ********************************** //
+                        composable(route = "cadastroeEmpresa"){ CadastroE(controleNavegacao) }
                     }
 
                 }
