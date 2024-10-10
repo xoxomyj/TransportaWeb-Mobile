@@ -27,26 +27,30 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import br.senai.sp.jandira.transportaweb.R
 import br.senai.sp.jandira.transportaweb.screens.LoginM
 import br.senai.sp.jandira.transportaweb.ui.theme.TransportaWebTheme
+import org.intellij.lang.annotations.JdkConstants.HorizontalAlignment
 
 @Composable
-fun HomeM(controleDeNavegacao: NavHostController){
+fun HomeM(controleDeNavegacao: NavHostController) {
 
     Surface(
         modifier = Modifier.fillMaxSize(),
         color = Color(0xFFF61221)
-    ){
+    ) {
         Box(
             modifier = Modifier
                 .padding(bottom = 650.dp)
-                .background(Color.White, shape =
-                    RoundedCornerShape(bottomStart = 16.dp, bottomEnd = 16.dp))
-        ){
+                .background(
+                    Color.White, shape =
+                    RoundedCornerShape(bottomStart = 16.dp, bottomEnd = 16.dp)
+                )
+        ) {
             Row(
                 modifier = Modifier.padding(top = 30.dp, start = 0.dp)
             ) {
@@ -68,17 +72,18 @@ fun HomeM(controleDeNavegacao: NavHostController){
                     modifier = Modifier
                         .height(55.dp)
 
-                ){
+                ) {
                     Text(
                         modifier = Modifier
-                            .padding(top = 16.dp, start = 80.dp),
+                            .padding(top = 16.dp, start = 70.dp),
                         text = "Jamal"
                     )
                 }
                 Column(
+                    horizontalAlignment = Alignment.CenterHorizontally,
                     modifier = Modifier
-                        .padding(start = 8.dp)
-                ){
+                        .padding(end = 30.dp)
+                ) {
                     Card(
                         modifier = Modifier
                             .padding(0.dp)
@@ -87,6 +92,18 @@ fun HomeM(controleDeNavegacao: NavHostController){
                         border = BorderStroke(2.dp, Color.White)
                     ) {
 
+                    }
+                    Row(
+                        modifier = Modifier
+                            .padding(top = 16.dp)
+                            .background(Color.Red, shape = RoundedCornerShape(20.dp))
+                    ) {
+                        Text(
+                            modifier = Modifier.fillMaxWidth(),
+                            textAlign = TextAlign.Center,
+                            text = "Status",
+                            color = Color.White
+                        )
                     }
                 }
             }
