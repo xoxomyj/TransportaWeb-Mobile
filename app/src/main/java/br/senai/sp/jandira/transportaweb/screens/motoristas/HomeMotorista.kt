@@ -26,7 +26,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.fontResource
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.Font
+import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
@@ -40,6 +43,8 @@ import org.intellij.lang.annotations.JdkConstants.HorizontalAlignment
 
 @Composable
 fun HomeM(controleDeNavegacao: NavHostController) {
+
+    val poppins = FontFamily(Font(R.font.poppins))
 
     Surface(
         modifier = Modifier.fillMaxSize(),
@@ -106,6 +111,7 @@ fun HomeM(controleDeNavegacao: NavHostController) {
                             Text(
                                 modifier = Modifier.fillMaxWidth(),
                                 textAlign = TextAlign.Center,
+                                fontWeight = FontWeight.SemiBold,
                                 text = "Status",
                                 color = Color.White
                             )
@@ -120,7 +126,30 @@ fun HomeM(controleDeNavegacao: NavHostController) {
                     Text(
                         text = "Home",
                         fontWeight = FontWeight.Bold,
+                        fontSize = (20.sp),
                         color = Color(0xFFF61221)
+                    )
+                }
+                Box(
+                    modifier = Modifier
+                        .padding(top = 8.dp, start = 24.dp, end = 24.dp)
+                        .fillMaxWidth()
+                        .height(2.dp)
+                        .background(color = Color(0xFFDADADA))
+                ){
+
+                }
+                Row (
+                    modifier = Modifier
+                        .padding(top = 14.dp)
+                ){
+                    Text(
+                        modifier = Modifier.fillMaxWidth(),
+                        text = "À serviço da Vanderley Transportes.",
+                        textAlign = TextAlign.Center,
+                        fontWeight = FontWeight.SemiBold,
+                        fontFamily = poppins,
+                        color = Color(0xFF868686)
                     )
                 }
             }
