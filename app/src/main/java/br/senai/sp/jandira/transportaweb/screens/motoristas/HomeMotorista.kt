@@ -27,9 +27,11 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import br.senai.sp.jandira.transportaweb.R
 import br.senai.sp.jandira.transportaweb.screens.LoginM
@@ -45,71 +47,87 @@ fun HomeM(controleDeNavegacao: NavHostController) {
     ) {
         Box(
             modifier = Modifier
-                .padding(bottom = 650.dp)
+                .padding(bottom = 625.dp)
                 .background(
                     Color.White, shape =
                     RoundedCornerShape(bottomStart = 16.dp, bottomEnd = 16.dp)
                 )
         ) {
-            Row(
-                modifier = Modifier.padding(top = 30.dp, start = 0.dp)
-            ) {
-                Box(
-                    modifier = Modifier
-                        .width(175.dp)
-                        .height(55.dp)
-                        .padding(top = 0.dp)
-                ) {
-                    Image(
-                        painterResource(R.drawable.logoo),
-                        contentDescription = "Logo",
-                        contentScale = ContentScale.Crop,
-                        modifier = Modifier
-                            .fillMaxSize()
-                    )
-                }
+            Column (
+                verticalArrangement = Arrangement.Center,
+            ){
                 Row(
-                    modifier = Modifier
-                        .height(55.dp)
-
+                    modifier = Modifier.padding(top = 30.dp, start = 0.dp)
                 ) {
-                    Text(
+                    Box(
                         modifier = Modifier
-                            .padding(top = 16.dp, start = 70.dp),
-                        text = "Jamal"
-                    )
-                }
-                Column(
-                    horizontalAlignment = Alignment.CenterHorizontally,
-                    modifier = Modifier
-                        .padding(end = 30.dp)
-                ) {
-                    Card(
-                        modifier = Modifier
-                            .padding(0.dp)
-                            .size(55.dp),
-                        shape = CircleShape,
-                        border = BorderStroke(2.dp, Color.White)
+                            .width(175.dp)
+                            .height(55.dp)
+                            .padding(top = 0.dp)
                     ) {
-
+                        Image(
+                            painterResource(R.drawable.logoo),
+                            contentDescription = "Logo",
+                            contentScale = ContentScale.Crop,
+                            modifier = Modifier
+                                .fillMaxSize()
+                        )
                     }
                     Row(
                         modifier = Modifier
-                            .padding(top = 16.dp)
-                            .background(Color.Red, shape = RoundedCornerShape(20.dp))
+                            .height(55.dp)
+
                     ) {
                         Text(
-                            modifier = Modifier.fillMaxWidth(),
-                            textAlign = TextAlign.Center,
-                            text = "Status",
-                            color = Color.White
+                            modifier = Modifier
+                                .padding(top = 16.dp, start = 70.dp),
+                            text = "Jamal"
                         )
                     }
+                    Column(
+                        horizontalAlignment = Alignment.CenterHorizontally,
+                        modifier = Modifier
+                            .padding(end = 26.dp)
+                    ) {
+                        Card(
+                            modifier = Modifier
+                                .padding(0.dp)
+                                .size(55.dp),
+                            shape = CircleShape,
+                            border = BorderStroke(2.dp, Color.White)
+                        ) {
+
+                        }
+                        Row(
+                            modifier = Modifier
+                                .padding(top = 12.dp)
+                                .background(Color(0xFFF61221), shape = RoundedCornerShape(20.dp))
+                        ) {
+                            Text(
+                                modifier = Modifier.fillMaxWidth(),
+                                textAlign = TextAlign.Center,
+                                text = "Status",
+                                color = Color.White
+                            )
+                        }
+                    }
+                }
+                Row (
+                    horizontalArrangement = Arrangement.Start,
+                    modifier = Modifier
+                        .padding(start = 32.dp, top = 16.dp)
+                ){
+                    Text(
+                        text = "Home",
+                        fontWeight = FontWeight.Bold,
+                        color = Color(0xFFF61221)
+                    )
                 }
             }
         }
     }
 }
+
 
 @Preview(showBackground = true)
 @Composable
