@@ -170,7 +170,8 @@ fun HomeM(controleDeNavegacao: NavHostController) {
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(50.dp)
-                    .padding(top = 10.dp)
+                    .padding(start = 20.dp, top = 10.dp, end = 20.dp),
+                horizontalArrangement = Arrangement.SpaceAround
             ){
                 Image(
                     painterResource(R.drawable.caminhao),
@@ -178,7 +179,15 @@ fun HomeM(controleDeNavegacao: NavHostController) {
                     contentScale = ContentScale.Crop,
                     modifier = Modifier
                         .width(45.dp)
-                        .padding(start = 20.dp)
+                        .padding(start = 0.dp)
+                )
+                Image(
+                    painterResource(R.drawable.perfil),
+                    contentDescription = "Caminhao",
+                    contentScale = ContentScale.Crop,
+                    modifier = Modifier
+                        .width(45.dp)
+                        .padding(start = 0.dp)
                 )
             }
         }
