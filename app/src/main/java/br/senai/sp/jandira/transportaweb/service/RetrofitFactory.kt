@@ -13,24 +13,28 @@ class RetrofitFactory {
         .addConverterFactory(GsonConverterFactory.create())
         .build()
 
-        fun getMotoristaService(java: Class<CMotoristaService>): CMotoristaService {
-            return retrofitFactory.create(CMotoristaService::class.java)
+    // ********************************** MOTORISTA ********************************** //
+
+        fun getMotoristaService(java: Class<MotoristaService>): MotoristaService {
+            return retrofitFactory.create(MotoristaService::class.java)
         }
 
-        fun getEmpresaService(): CEmpresaService{
-             return retrofitFactory.create(CEmpresaService::class.java)
+        fun getMotoristaService(): MotoristaService {
+            return retrofitFactory.create(MotoristaService::class.java)
         }
 
-        fun postMotoristaService(): CMotoristaService{
-            return retrofitFactory.create(CMotoristaService::class.java)
+        fun postMotoristaService(): MotoristaService{
+            return retrofitFactory.create(MotoristaService::class.java)
         }
 
-        fun postEmpresaService(): CEmpresaService {
-            return retrofitFactory.create((CEmpresaService::class.java))
+    // ********************************** MOTORISTA ********************************** //
+
+        fun postEmpresaService(): EmpresaService {
+            return retrofitFactory.create((EmpresaService::class.java))
         }
 
-        fun getMotoristaService(): CMotoristaService {
-            return retrofitFactory.create(CMotoristaService::class.java)
+        fun getEmpresaService(): EmpresaService{
+            return retrofitFactory.create(EmpresaService::class.java)
         }
 
 }

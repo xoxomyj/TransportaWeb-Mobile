@@ -27,7 +27,6 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import br.senai.sp.jandira.transportaweb.R
 import br.senai.sp.jandira.transportaweb.model.Motorista
@@ -39,7 +38,8 @@ import retrofit2.Response
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun CadastroMotorista(controleNavegacao: NavHostController) {
+fun CadastroM(controleNavegacao: NavHostController) {
+
     val nome = remember { mutableStateOf("") }
     val foto_url = remember { mutableStateOf("") }
     val data_nascimento = remember { mutableStateOf("") }
@@ -263,6 +263,6 @@ fun CadastroMotorista(controleNavegacao: NavHostController) {
 @Composable
 fun PreviewCadastroMotorista() {
     TransportaWebTheme {
-        CadastroMotorista(controleNavegacao = NavHostController(LocalContext.current))
+        CadastroM(controleNavegacao = NavHostController(LocalContext.current))
     }
 }
