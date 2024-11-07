@@ -175,7 +175,6 @@ fun TelaViagens(controleNavegacao: NavHostController) {
                         )
                     }
 
-                    // Imagem de localização com texto ao lado
                     Row(
                         modifier = Modifier
                             .padding(top = 6.dp)
@@ -188,7 +187,7 @@ fun TelaViagens(controleNavegacao: NavHostController) {
                             modifier = Modifier.size(30.dp)
                         )
 
-                        Spacer(modifier = Modifier.width(8.dp)) // Espaçamento entre imagem e texto
+                        Spacer(modifier = Modifier.width(8.dp))
 
                         Text(
                             text = "6391 Elgin St. Celina, Delaware 10299",
@@ -198,7 +197,6 @@ fun TelaViagens(controleNavegacao: NavHostController) {
                         )
                     }
 
-                    // Imagem da caixa com texto ao lado
                     Row(
                         modifier = Modifier
                             .padding(top = 6.dp)
@@ -211,7 +209,7 @@ fun TelaViagens(controleNavegacao: NavHostController) {
                             modifier = Modifier.size(30.dp)
                         )
 
-                        Spacer(modifier = Modifier.width(8.dp)) // Espaçamento entre imagem e texto
+                        Spacer(modifier = Modifier.width(8.dp))
 
                         Text(
                             text = "Product - 02",
@@ -220,7 +218,6 @@ fun TelaViagens(controleNavegacao: NavHostController) {
                         )
                     }
 
-                    // Imagem do círculo com texto ao lado
                     Row(
                         modifier = Modifier
                             .padding(top = 6.dp)
@@ -233,7 +230,7 @@ fun TelaViagens(controleNavegacao: NavHostController) {
                             modifier = Modifier.size(30.dp)
                         )
 
-                        Spacer(modifier = Modifier.width(8.dp)) // Espaçamento entre imagem e texto
+                        Spacer(modifier = Modifier.width(8.dp))
 
                         Text(
                             text = "Price - $52.01",
@@ -242,8 +239,7 @@ fun TelaViagens(controleNavegacao: NavHostController) {
                         )
                     }
 
-                    // Linha de separação abaixo da última imagem
-                    Spacer(modifier = Modifier.height(8.dp)) // Aumenta a separação
+                    Spacer(modifier = Modifier.height(8.dp))
                     Box(
                         modifier = Modifier
                             .fillMaxWidth()
@@ -251,14 +247,12 @@ fun TelaViagens(controleNavegacao: NavHostController) {
                             .background(color = Color(0xFFDADADA))
                     )
 
-                    // Cilindro e quadrado na mesma linha
-                    Spacer(modifier = Modifier.height(8.dp)) // Espaçamento entre a linha e os itens
+                    Spacer(modifier = Modifier.height(8.dp))
                     Row(
                         modifier = Modifier.fillMaxWidth(),
                         verticalAlignment = Alignment.CenterVertically,
-                        horizontalArrangement = Arrangement.SpaceBetween // Para alinhar os itens
+                        horizontalArrangement = Arrangement.SpaceBetween
                     ) {
-                        // Cilindro
                         Box(
                             modifier = Modifier
                                 .width(114.dp)
@@ -266,18 +260,17 @@ fun TelaViagens(controleNavegacao: NavHostController) {
                                 .clip(RoundedCornerShape(2.dp))
                                 .background(Color(0xFFC00000))
                         ) {
-                            // Texto dentro do cilindro
+
                             Text(
                                 text = "WO# 04-1209",
                                 color = Color.White,
                                 modifier = Modifier
-                                    .align(Alignment.Center) // Centraliza o texto dentro do cilindro
-                                    .padding(horizontal = 8.dp), // Adiciona um pouco de padding
-                                style = TextStyle(fontSize = 12.sp) // Tamanho do texto
+                                    .align(Alignment.Center)
+                                    .padding(horizontal = 8.dp),
+                                style = TextStyle(fontSize = 12.sp)
                             )
                         }
 
-                        // Quadrado no canto direito
                         Box(
                             modifier = Modifier
                                 .size(35.64.dp, 32.dp)
@@ -288,7 +281,7 @@ fun TelaViagens(controleNavegacao: NavHostController) {
                                 text = "03",
                                 color = Color.White,
                                 modifier = Modifier
-                                    .align(Alignment.Center), // Centraliza o texto dentro do quadrado
+                                    .align(Alignment.Center),
                                 style = TextStyle(fontWeight = FontWeight.Bold)
                             )
                         }
